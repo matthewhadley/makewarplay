@@ -1,0 +1,18 @@
+language: bash
+env:
+  global:
+  - GH_REF: github.com/matthewhadley/makewarplay.github.com.git
+  - secure: DDgaN5ybkcY9sU4IX2TzPLefmLRZtVb5VBuGoNTsx5uD/5KOUX4abpGJT1ifV/O7Wc3MVDVupN0k3I+iKQElIhp54TWhY7Hsqj1rV90eBj60dKueEU1ETtM23+7tq0eT4To8dcHdyOoVV0vkd1qwEEsvO+bws8UzOLdFe/QErMD8LHmb04/vHn3G9Udwc8Xg+Et4WJXM270feCUOuIjfQp5iRahp+/B815uRes58jLPF4OEkeH9hG5PAbqd/0KaFUJN/2+C+5VQc5qsgMzp0bFpmgD2wJD+eP2weyxpwqeWMz1HVdVQIHnQBw4t7f/ddCeaqznvW7WvB9RnmXY7nFUOPsPpF6aPcikWEnkqEZAgpydijjtpJsG4PwVtEJb5NdY3q618qGbUJP9AJPjTAUluXD4jcEaqYvkmDTlmE6E5/TairtjoiKonRWDfhU8d0cYEOnjxSZbhdZBcc83pNuC+F2lEWGCznTeRkMYU4PJjciued4V0D7Vf/tusBHHkkyWoR0Q4X4KVff+IaqIoOkH07TEGgbF1PywLK4pB3vqJbdLk6cLlo6a5UbWKJVyoCWLTUg6UJR+ow5KdsUPEdh73Vw9VwbHhVwhFoIOkI0dBFc7lSUnPfk7fZKBLeDWqH3muLXBHZaTYs6FgotPj3xU0Ah8L85s+1Kd+lU8ofiC0=
+script: "./build.sh"
+after_script:
+- cd www
+- touch .nojekyll
+- git init
+- git config user.name "matthewhadley"
+- git config user.email "matthew.hadley@gmail.com"
+- git add .
+- git commit -m "build gh-pages"
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+branches:
+  only:
+  - master

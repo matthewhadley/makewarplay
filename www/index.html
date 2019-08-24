@@ -74,10 +74,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     border-radius: 2px;
   }
 
-  .pinterest-embed {
-      display:none;
-  }
-
   @media only screen and (max-width: 480px) and (orientation:portrait), only screen and (max-device-width: 480px) and (orientation:portrait) {
     body {
       font-size: 3.1em;
@@ -121,33 +117,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     <ol>
       <!--ig:start--><!--ig:end-->
     </ol>
-    <h2><a href="https://www.pinterest.com/makewarplay/makewarplay"> pinterest</a></h2>
-    <div class="pinterest"></div>
-    <div class="pinterest-embed">
-        <a data-pin-do="embedBoard" data-pin-board-width="120" data-pin-scale-height="60" data-pin-scale-width="60" href="https://www.pinterest.com/makewarplay/makewarplay"></a>
-        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-    </div>
-
-    <script>
-        let pintries = 0;
-        const pinits = function () {
-            let nodes = document.querySelectorAll('span[data-pin-src]')
-            if (nodes.length === 0 && ++pintries < 10) {
-                setTimeout(pinits, 50);
-                return;
-            }
-            let tpl='<ol>';
-            nodes.forEach(function(n, i) {
-                if (i>0) {
-                    tpl = tpl + `<li><a href="${n.dataset.pinHref}"><img src="${n.dataset.pinSrc}" /></a></li>`
-                }
-            });
-            tpl = tpl + '</ol>';
-            let pindom = document.querySelectorAll('.pinterest')[0];
-            pindom.innerHTML = tpl;
-        }
-        pinits();
-    </script>
   </div>
 </body>
 </html>

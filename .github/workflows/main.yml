@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: gh-pages
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -27,6 +27,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Update gh-pages
       env:
+        # Note: set this secret in each repo's Secrets
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         echo "update gh-pages"
